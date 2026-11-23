@@ -2,28 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Infrangible\CatalogIndexerFlat\Plugin\Catalog\Model\Indexer\Category\Flat;
-
 /**
  * @author      Andreas Knollmann
- * @copyright   2014-2024 Softwareentwicklung Andreas Knollmann
+ * @copyright   Copyright (c) 2014-2026 Softwareentwicklung Andreas Knollmann
  * @license     http://www.opensource.org/licenses/mit-license.php MIT
  */
-class State
+
+namespace Infrangible\CatalogIndexerFlat\Plugin\Catalog\Model\Indexer\Category\Flat;
+
+use Infrangible\CatalogIndexerFlat\Plugin\Catalog\Model\Indexer\AbstractFlatState;
+
+/**
+ * Disables the flat tables of categories on request.
+ */
+class State extends AbstractFlatState
 {
-    /** @var bool */
-    private $forceDisabled = false;
-
-    /** @noinspection PhpUnusedParameterInspection */
-    public function aroundIsFlatEnabled(
-        \Magento\Catalog\Model\Indexer\Category\Flat\State $subject,
-        callable $proceed
-    ): bool {
-        return ! $this->forceDisabled && $proceed();
-    }
-
-    public function setForceDisabled(bool $forceDisabled = true)
-    {
-        $this->forceDisabled = $forceDisabled;
-    }
 }
